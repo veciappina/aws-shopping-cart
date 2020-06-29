@@ -1,0 +1,30 @@
+{
+  "name": "aws-shopping-cart",
+  "version": "1.0.0",
+  "description": "Basic shopping cart demo using AWS cloud services",
+  "main": "handler.js",
+  "scripts": {
+    "serve": "sls offline --host localhost --httpPort 5000 --color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veciappina/aws-shopping-cart.git"
+  },
+  "keywords": [
+    "shopping",
+    "cart",
+    "aws"
+  ],
+  "author": "Victor Ciappina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veciappina/aws-shopping-cart/issues"
+  },
+  "homepage": "https://github.com/veciappina/aws-shopping-cart#readme",
+  "devDependencies": {
+    "serverless-offline": "^6.4.0"
+  },
+  "dependencies": {
+    "serverless-dynamodb-local": "^0.2.39"
+  }
+}

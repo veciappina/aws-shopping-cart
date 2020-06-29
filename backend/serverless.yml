@@ -1,0 +1,70 @@
+service: aws-shopping-cart
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+  timeout: 10
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    productsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: products
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+          - AttributeName: price
+            AttributeType: N
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+          - AttributeName: price
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+custom:
+  dynamodb:
+    start:
+      seed: true
+    seed:
+      test:
+        sources:
+          - table: products
+            sources: [./seeds/products.json]
+    stages:
+      - ${self:provider.stage}
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
