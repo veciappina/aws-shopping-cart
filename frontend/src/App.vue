@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ProductList></ProductList>
+    <ProductList @AddedToCart="remountShoppingCart"></ProductList>
     <br>
     <br>
     <ShoppingCart></ShoppingCart>
@@ -13,6 +13,16 @@ import ShoppingCart from './components/ShoppingCart.vue'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      componentKey: 0,
+    }
+  },
+  methods: {
+    remountShoppingCart () {
+      this.componentKey = !this.componentKey
+    }
+  },
   components: {
     ProductList,
     ShoppingCart
