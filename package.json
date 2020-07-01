@@ -5,6 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "serve": "concurrently --kill-others \"npm run serve-backend\" \"npm run serve-frontend\"",
+    "install": "cd frontend && npm install && cd ../backend && npm install",
     "serve-backend": "npm run serve --prefix ./backend",
     "serve-frontend": "npm run serve --prefix ./frontend"
   },
