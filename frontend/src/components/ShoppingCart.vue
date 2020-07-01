@@ -1,6 +1,7 @@
 <template>
   <div class="shopping-cart">
     <h1>Shopping Cart</h1>
+    <button @click="clearCart">Clear</button>
     <ul>
       <li v-for="(product) in products" :key="product.name">
         {{ product.name }}, quantity: {{ product.quantity }}, total: {{ getTotalForProduct(product) }}
@@ -24,6 +25,13 @@ export default {
   methods: {
     getTotalForProduct (product) {
       return Math.floor(product.quantity * product.price * 100) / 100
+    },
+    async clearCart () {
+      let shoppingCartId = Cookies.get('shopping-cart-id')
+      await axios.delete('/api/cart', {
+        data: { shoppingCartId: shoppingCartId }
+      })
+      this.$emit('RemountCart')
     }
   },
   computed: {
