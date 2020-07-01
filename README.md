@@ -22,7 +22,7 @@ The basic idea is to simulate a REST API controlled by a very basic UI, capable 
 
 **Steps**
 
-1) **Install NodeJs**
+1) **Install [NodeJs](https://nodejs.org/)**
 
 2) **Install serverless NPM Global dependencies (Serverless Framework and VueCLI)**
     ```
@@ -72,7 +72,7 @@ PUT
 DELETE
 ``/cart`` -> Accepts a shopping cart ID and clears the entire products at the basket.
 
-## DynamoDB design
+## Database design
 
 For the purpose of this example, I choose a NoSQL DB such as DynamoDB and tried to keep the structure as simple as possible. These were the tables designed:
 
