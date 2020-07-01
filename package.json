@@ -1,0 +1,29 @@
+{
+  "name": "aws-shopping-cart-backend",
+  "version": "1.0.0",
+  "description": "Basic shopping cart demo using AWS cloud services",
+  "main": "handler.js",
+  "scripts": {
+    "serve": "concurrently --kill-others \"npm run serve-backend\" \"npm run serve-frontend\"",
+    "serve-backend": "npm run serve --prefix ./backend",
+    "serve-frontend": "npm run serve --prefix ./frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veciappina/aws-shopping-cart.git"
+  },
+  "keywords": [
+    "shopping",
+    "cart",
+    "aws"
+  ],
+  "author": "Victor Ciappina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veciappina/aws-shopping-cart/issues"
+  },
+  "homepage": "https://github.com/veciappina/aws-shopping-cart#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

@@ -7,12 +7,14 @@ module.exports = {
         '@': path.resolve('src')
       }
     },
+    stats: 'errors-only',
     devServer: {
       proxy: {
-        '/dev/*/': {
+        '/api/*/': {
           target: 'http://localhost:5000',
           secure: false,
-          logLevel: 'error'
+          logLevel: 'error',
+          pathRewrite: { '^/api/': '/' }
         }
       }
     },
