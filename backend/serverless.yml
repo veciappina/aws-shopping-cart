@@ -17,15 +17,24 @@ functions:
       - http:
           path: products
           method: get
-  shopping-cart:
-    handler: functions/shopping-cart.handler
+  get-cart:
+    handler: functions/get-cart.handler
     events:
       - http:
-          path: shopping-cart
-          method: get
-#    Define function environment variables here
-#    environment:
-#      variable2: value2
+          path: cart
+          method: post
+  add-to-cart:
+    handler: functions/add-to-cart.handler
+    events:
+      - http:
+          path: cart
+          method: put
+  clear-cart:
+    handler: functions/clear-cart.handler
+    events:
+      - http:
+          path: cart
+          method: delete
 
 resources:
   Resources:
@@ -69,7 +78,3 @@ custom:
             sources: [./seeds/shoppingCarts.json]
     stages:
       - ${self:provider.stage}
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
