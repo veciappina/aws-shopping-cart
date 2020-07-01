@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'ShoppingCart',
@@ -31,8 +32,13 @@ export default {
     }
   },
   async mounted () {
-    let response = await axios.get('/api/shopping-cart')
-    this.products = response.data
+    let shoppingCartId = Cookies.get('shopping-cart-id')
+    let response = await axios.post('/api/cart', {
+      shoppingCartId: shoppingCartId
+    })
+    this.products = response.data.products
+    if (!shoppingCartId || shoppingCartId !== Cookies.get('shopping-cart-id') || shoppingCartId !== response.data.id) Cookies.set('shopping-cart-id', response.data.id)
+    this.$emit('CartMounted')
   }
 }
 </script>

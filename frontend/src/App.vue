@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <ProductList @AddedToCart="remountShoppingCart"></ProductList>
+    <ProductList @AddedToCart="remountShoppingCart" :cartMounted="cartMounted"></ProductList>
     <br>
     <br>
-    <ShoppingCart></ShoppingCart>
+    <ShoppingCart :key="componentKey" @CartMounted="cartMounted=1" @RemountCart="remountShoppingCart"></ShoppingCart>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
   data () {
     return {
       componentKey: 0,
+      cartMounted: 0,
     }
   },
   methods: {
