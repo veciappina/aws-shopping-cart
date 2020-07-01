@@ -23,8 +23,8 @@ functions:
       - http:
           path: cart
           method: post
-  add-to-cart:
-    handler: functions/add-to-cart.handler
+  update-cart:
+    handler: functions/update-cart.handler
     events:
       - http:
           path: cart
