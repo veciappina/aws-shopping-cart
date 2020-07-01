@@ -28,15 +28,15 @@ The basic idea is to simulate a REST API controlled by a very basic UI, capable 
     ```
     npm install -g serverless serverless-offline @vue/cli @vue/cli-service-global
     ```
-3) Install NodeJs dependencies
+3) **Install NodeJs dependencies**
     ```
     npm install
     ```
-4) Make sure you have these ports available on your machine:
+4) **Make sure you have these ports available on your machine:**
     - 8080 (VueCLI local server)
     - 8000 (Local DynamoDB)
     - 5000 (Serverless Offline)
-5) Execute:
+5) **Execute:**
     ```
     npm run serve
     ```
