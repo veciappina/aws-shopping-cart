@@ -11,11 +11,17 @@ plugins:
   - serverless-dynamodb-local
 
 functions:
-  hello:
-    handler: handler.hello
+  products:
+    handler: functions/products.handler
     events:
       - http:
-          path: hello
+          path: products
+          method: get
+  shopping-cart:
+    handler: functions/shopping-cart.handler
+    events:
+      - http:
+          path: shopping-cart
           method: get
 #    Define function environment variables here
 #    environment:
@@ -26,7 +32,7 @@ resources:
     usersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: users
+        TableName: shopping_carts
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -41,27 +47,26 @@ resources:
       Properties:
         TableName: products
         AttributeDefinitions:
-          - AttributeName: name
+          - AttributeName: id
             AttributeType: S
-          - AttributeName: price
-            AttributeType: N
         KeySchema:
-          - AttributeName: name
+          - AttributeName: id
             KeyType: HASH
-          - AttributeName: price
-            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
 custom:
   dynamodb:
     start:
+      migration: true
       seed: true
     seed:
       test:
         sources:
           - table: products
             sources: [./seeds/products.json]
+          - table: shopping_carts
+            sources: [./seeds/shoppingCarts.json]
     stages:
       - ${self:provider.stage}
 #  Outputs:
