@@ -40,6 +40,10 @@ The basic idea is to simulate a REST API controlled by a very basic UI, capable 
     ```
     npm run serve
     ```
+6) **Wait for DynamoDB to be mounted (it's usually the service that takes longer) an the go to:**
+    ```
+    http://localhost:8080
+    ```
    
 ## Project structure
 
