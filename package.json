@@ -4,10 +4,8 @@
   "description": "Basic shopping cart demo using AWS cloud services",
   "main": "handler.js",
   "scripts": {
-    "serve": "concurrently --kill-others \"npm run serve-backend\" \"npm run serve-frontend\"",
-    "install": "cd frontend && npm install && cd ../backend && npm install",
-    "serve-backend": "npm run serve --prefix ./backend",
-    "serve-frontend": "npm run serve --prefix ./frontend"
+    "serve": "node serve.js",
+    "install": "cd frontend && npm install && cd ../backend && npm install"
   },
   "repository": {
     "type": "git",
@@ -26,5 +24,8 @@
   "homepage": "https://github.com/veciappina/aws-shopping-cart#readme",
   "devDependencies": {
     "concurrently": "^5.2.0"
+  },
+  "dependencies": {
+    "node-ipc": "^9.1.1"
   }
 }

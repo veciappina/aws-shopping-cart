@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "handler.js",
   "scripts": {
-    "serve": "concurrently --kill-others \"npm run serve-lambda\" \"npm run serve-dynamodb\"",
+    "serve": "node start-backend.js",
     "serve-lambda": "sls offline --host localhost -P 5000 --color",
     "serve-dynamodb": "sls dynamodb install && sls dynamodb start --migrate"
   },
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "concurrently": "^5.2.0",
+    "node-ipc": "^9.1.1",
     "serverless-dynamodb-local": "^0.2.39"
   }
 }
